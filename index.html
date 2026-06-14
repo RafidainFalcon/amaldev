@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هدية حب لـ أمل</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Falling Hearts Background -->
+    <div class="falling-hearts" id="fallingHearts"></div>
+
+    <!-- Page 1: Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-content">
+            <!-- Pulsing Heart GIF -->
+            <div class="heart-container">
+                <svg class="pulsing-heart" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF1B6B"/>
+                            <stop offset="100%" style="stop-color:#FF6B6B"/>
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <path d="M50 88.9L16.7 55.6C7.2 46.1 7.2 30.9 16.7 21.4 26.2 11.9 41.4 11.9 50.9 21.4L50 22.3 49.1 21.4C58.6 11.9 73.8 11.9 83.3 21.4 92.8 30.9 92.8 46.1 83.3 55.6L50 88.9z" 
+                          fill="url(#heartGradient)" 
+                          filter="url(#glow)"
+                          style="transform-origin: center; animation: pulse 1.5s ease-in-out infinite;"/>
+                </svg>
+            </div>
+            
+            <h1 class="welcome-text">إلى حبيبتي</h1>
+            <h2 class="beloved-name">أمل</h2>
+            <p class="love-quote">"أنتِ نور عيوني"</p>
+            
+            <button class="enter-button" id="enterButton">
+                <span>اضغط لتدخل</span>
+                <i class="fas fa-heart"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Page 2: Main Content (Multi-Page Layout) -->
+    <div class="main-content" id="mainContent">
+        
+        <!-- ===== PAGE 1: Music + Lyrics ===== -->
+        <div class="page active" data-page="1">
+            <div class="page-header">
+                <span class="page-title">🎵 أغنيتنا</span>
+                <span class="page-num">1 / 8</span>
+            </div>
+            
+            <div class="page-content">
+                <section class="music-player-section">
+                    <div class="album-cover">
+                        <div class="album-rotation" id="albumRotation">
+                            <img src="https://picsum.photos/300/300?random=1" alt="غلاف الألبوم" id="albumArt">
+                        </div>
+                    </div>
+                    
+                    <div class="song-info">
+                        <h3>قلب على الورقة نرسم</h3>
+                        <p>محمد عبد الجبار</p>
+                    </div>
+                    
+                    <div class="player-controls">
+                        <button class="control-btn" id="prevBtn"><i class="fas fa-backward"></i></button>
+                        <button class="control-btn play-btn" id="playBtn"><i class="fas fa-play"></i></button>
+                        <button class="control-btn" id="nextBtn"><i class="fas fa-forward"></i></button>
+                        <button class="control-btn" id="repeatBtn"><i class="fas fa-redo"></i></button>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <div class="time-display">
+                            <span id="currentTime">00:00</span>
+                            <span id="duration">04:23</span>
+                        </div>
+                    </div>
+                    
+                    <audio id="audioPlayer" preload="auto">
+                        <source src="audio/mpeg.mp3" type="audio/mpeg">
+                    </audio>
+                </section>
+
+                <section class="lyrics-section">
+                    <div class="section-header">
+                        <i class="fas fa-music"></i>
+                        <h3>كلمات الأغنية</h3>
+                    </div>
+                    <div class="lyrics-container" id="lyricsContainer">
+                        <p class="lyric-line" data-time="25">قلب ع الورقة انرسم</p>
+                        <p class="lyric-line" data-time="28">بالمشاعر والقلم</p>
+                        <p class="lyric-line" data-time="31">احساس بالنص انقسم</p>
+                        <p class="lyric-line" data-time="34">أني وياك</p>
+                        <p class="lyric-line" data-time="37">تمشي احسك بالنبض</p>
+                        <p class="lyric-line" data-time="40">طول باحساسي وعرض</p>
+                        <p class="lyric-line" data-time="43">حبي الك كبر الأرض</p>
+                        <p class="lyric-line" data-time="46">واكثر اهواك</p>
+                        <p class="lyric-line" data-time="48">قلب ع الورقة انرسم</p>
+                        <p class="lyric-line" data-time="51">بالمشاعر والقلم</p>
+                        <p class="lyric-line" data-time="54">احساس بالنص انقسم</p>
+                        <p class="lyric-line" data-time="57">أني وياك</p>
+                        <p class="lyric-line" data-time="60">تمشي احسك بالنبض</p>
+                        <p class="lyric-line" data-time="63">طول باحساسي وعرض</p>
+                        <p class="lyric-line" data-time="66">حبي الك كبر الأرض</p>
+                        <p class="lyric-line" data-time="69">واكثر اهواك</p>
+                        <p class="lyric-line" data-time="69">حبك نهر ماي</p>
+                        <p class="lyric-line" data-time="72">وفترة ضما هاي</p>
+                        <p class="lyric-line" data-time="75">بالصحو وبالاحلام</p>
+                        <p class="lyric-line" data-time="78">أريدك اوياي</p>
+                        <p class="lyric-line" data-time="81">گلبي يتمناك</p>
+                        <p class="lyric-line" data-time="84">وكل قوته يهواك</p>
+                        <p class="lyric-line" data-time="87">يكرهها الايام</p>
+                        <p class="lyric-line" data-time="90">الي تمر بلياك</p>
+                        <p class="lyric-line" data-time="93">بس گلي اجيب امنين</p>
+                        <p class="lyric-line" data-time="96">مثلك ينور العين</p>
+                        <p class="lyric-line" data-time="99">احتار ادورك وين</p>
+                        <p class="lyric-line" data-time="102">وبدمي الگاك</p>
+                        <p class="lyric-line" data-time="105">غير انت حب الروح</p>
+                        <p class="lyric-line" data-time="108">من بالي ابد ميروح</p>
+                        <p class="lyric-line" data-time="111">شتسوي الك مسموح</p>
+                        <p class="lyric-line" data-time="114">بس ابقى وياك</p>
+                        <p class="lyric-line" data-time="117"> insta :- @dj6bd</p>
+                        <p class="lyric-line" data-time="145">ماكو غيرك شي مهم</p>
+                        <p class="lyric-line" data-time="148">غالي يا أجمل حلم</p>
+                        <p class="lyric-line" data-time="151">من اشوفك ابتسم</p>
+                        <p class="lyric-line" data-time="154">أني بالنوم</p>
+                        <p class="lyric-line" data-time="157">عيوني تعشگ صورتك</p>
+                        <p class="lyric-line" data-time="160">وأحلى عالم شوفتك</p>
+                        <p class="lyric-line" data-time="163">فراشي لو بي ريحتك</p>
+                        <p class="lyric-line" data-time="166">منه ولا اكوم</p>
+                        <p class="lyric-line" data-time="169">ماكو غيرك شي مهم</p>
+                        <p class="lyric-line" data-time="172">غالي يا أجمل حلم</p>
+                        <p class="lyric-line" data-time="175">من اشوفك ابتسم</p>
+                        <p class="lyric-line" data-time="178">أني بالنوم</p>
+                        <p class="lyric-line" data-time="181">عيوني تعشگ صورتك</p>
+                        <p class="lyric-line" data-time="184">وأحلى عالم شوفتك</p>
+                        <p class="lyric-line" data-time="187">فراشي لو بي ريحتك</p>
+                        <p class="lyric-line" data-time="190">منه ولا اكوم</p>
+                        <p class="lyric-line" data-time="191">بيك اني مجنون</p>
+                        <p class="lyric-line" data-time="194">وحبي بكبر كون</p>
+                        <p class="lyric-line" data-time="197">علية بس ياريت</p>
+                        <p class="lyric-line" data-time="200">لو الله يهديك</p>
+                        <p class="lyric-line" data-time="203">كون ارتبط بيك</p>
+                        <p class="lyric-line" data-time="206">ما لحظة اخليك</p>
+                        <p class="lyric-line" data-time="209">محلاها للموت</p>
+                        <p class="lyric-line" data-time="212">لو ايدي بأيديك</p>
+                        <p class="lyric-line" data-time="215">اوعدني لو للموت</p>
+                        <p class="lyric-line" data-time="218">تبقالي صورة وصوت</p>
+                        <p class="lyric-line" data-time="221">خل عمري كلة يفوت</p>
+                        <p class="lyric-line" data-time="224">المهم وياك</p>
+                        <p class="lyric-line" data-time="227">لو عندي عشر گلوب</p>
+                        <p class="lyric-line" data-time="230">اتركها بيك تذوب</p>
+                        <p class="lyric-line" data-time="233">مااضن عمر محسوب</p>
+                        <p class="lyric-line" data-time="236">عمري بلياك</p>
+                        <p class="lyric-line" data-time="239">قلب عالورقة نرسم</p>
+                        <p class="lyric-line" data-time="243">insta :- @dj6bd</p>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="page-nav">
+                <button class="nav-btn next-page">التالي ←</button>
+            </div>
+        </div>
+
+        <!-- ===== PAGE 2: Love Message ===== -->
+        <div class="page" data-page="2">
+            <div class="page-header">
+                <span class="page-title">💌 رسالتي لك</span>
+                <span class="page-num">2 / 8</span>
+            </div>
+            
+            <div class="page-content page-center">
+                <section class="love-message-section" id="love-message">
+                    <div class="section-header">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <h3>💌 رسالتي لك</h3>
+                    </div>
+                    <div class="message-card">
+                        <p class="typed-message" id="typedMessage"></p>
+                        <span class="cursor">|</span>
+                    </div>
+                    <button class="love-button" id="loveButton">
+                        <i class="fas fa-heart"></i>
+                        <span>أحبك</span>
+                    </button>
+                </section>
+            </div>
+            
+            <div class="page-nav">
+                <button class="nav-btn prev-page">→ السابق</button>
+                <button class="nav-btn next-page">التالي ←</button>
+            </div>
+        </div>
+
+        <!-- ===== PAGE 3: Love Duration ===== -->
+        <div class="page" data-page="3">
+            <div class="page-header">
+                <span class="page-title">⏳ مدة حبنا</span>
+                <span class="page-num">3 / 8</span>
+            </div>
+            
+            <div class="page-content page-center">
+                <section class="love-duration-section">
+                    <div class="section-header">
+                        <i class="fas fa-clock"></i>
+                        <h3>⏳ مدة حبنا</h3>
+                    </div>
+                    <div class="duration-counter">
+                        <div class="duration-item">
+                            <span class="duration-number" id="days">0</span>
+                            <span class="duration-label">يوم</span>
+                        </div>
+                        <div class="duration-separator">:</div>
+                        <div class="duration-item">
+                            <span class="duration-number" id="hours">0</span>
+                            <span class="duration-label">ساعة</span>
+                        </div>
+                        <div class="duration-separator">:</div>
+                        <div class="duration-item">
+                            <span class="duration-number" id="minutes">0</span>
+                            <span class="duration-label">دقيقة</span>
+                        </div>
+                        <div class="duration-separator">:</div>
+                        <div class="duration-item">
+                            <span class="duration-number" id="seconds">0</span>
+                            <span class="duration-label">ثانية</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="page-nav">
+                <button class="nav-btn prev-page">→ السابق</button>
+                <button class="nav-btn next-page">التالي ←</button>
+            </div>
+        </div>
+
+        <!-- ===== PAGE 4: Secret Date ===== -->
+        <div class="page" data-page="4">
+            <div class="page-header">
+                <span class="page-title">🔐 التاريخ السري</span>
+                <span class="page-num">4 / 8</span>
+            </div>
+            
+            <div class="page-content page-center">
+                <section class="secret-section">
+                    <div class="section-header">
+                        <i class="fas fa-lock"></i>
+                        <h3>🔐 رسالة سرية مقفلة</h3>
+                    </div>
+                    <div class="secret-box" id="secretBox">
+                        <div class="lock-icon" id="lockIcon">🔒</div>
+                        <p class="secret-hint" id="secretHint">اختر تاريخ بداية حبنا</p>
+                        
+                        <div class="date-picker-step" id="stepYear">
+                            <p class="date-step-title">اختر السنة</p>
+                            <div class="date-grid years-grid" id="yearsGrid"></div>
+                        </div>
+                        
+                        <div class="date-picker-step" id="stepMonth" style="display:none">
+                            <p class="date-step-title">اختر الشهر</p>
+                            <div class="date-grid months-grid" id="monthsGrid"></div>
+                        </div>
+                        
+                        <div class="date-picker-step" id="stepDay" style="display:none">
+                            <p class="date-step-title">اختر اليوم</p>
+                            <div class="date-grid days-grid" id="daysGrid"></div>
+                        </div>
+                        
+                        <div class="selected-date-display" id="selectedDateDisplay" style="display:none">
+                            <span class="selected-date-label">تاريخ حبنا:</span>
+                            <span class="selected-date-value" id="selectedDateValue"></span>
+                        </div>
+                        
+                        <button class="secret-btn" id="secretUnlockBtn" style="display:none">🔓 افتح الرسالة</button>
+                        <p class="secret-error" id="secretError">❌ هذا التاريخ ليس بداية حبنا، حاول مرة أخرى</p>
+                        
+                        <div class="secret-message" id="secretMessage">
+                            <div class="secret-heart">💖</div>
+                            <h3>إلى حبيبتي أمل</h3>
+                            <p>
+                                من أول يوم التقيتك، عرفت أنكِ القدر الذي انتظرته طوال عمري.
+                                أنتِ ليست مجرد حبيبة، أنتِ وطن.. أنتِ حلم أصبح حقيقة.
+                                كل يوم معكِ يثبت أن الحب الحقيقي موجود.
+                                أحبكِ أكثر مما تتخيلين، وأكثر مما تستوعب الكلمات.
+                            </p>
+                            <p class="secret-signature">أنا... أحبكِ</p>
+                        </div>
+                        
+                        <button class="secret-reset-btn" id="secretResetBtn" style="display:none">🔄 اختر تاريخ آخر</button>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="page-nav">
+                <button class="nav-btn prev-page">→ السابق</button>
+                <button class="nav-btn next-page">التالي ←</button>
+            </div>
+        </div>
+
+        <!-- ===== PAGE 5: Photos ===== -->
+        <div class="page" data-page="5">
+            <div class="page-header">
+                <span class="page-title">📷 الصور</span>
+                <span class="page-num">5 / 8</span>
+            </div>
+            
+            <div class="page-content page-center">
+                <section class="photo-slider-section" id="photos">
+                    <div class="section-header">
+                        <i class="fas fa-images"></i>
+                        <h3>📷 الصور</h3>
+                        <span class="photo-counter" id="photoCounter">1 / 5</span>
+                    </div>
+                    <div class="photo-slider">
+                        <button class="slider-nav prev" id="prevPhoto"><i class="fas fa-chevron-left"></i></button>
+                        <div class="photo-frame">
+                            <div class="photo-container" id="photoContainer">
+                                <img src="https://picsum.photos/400/500?random=10" alt="صورة 1" class="slider-photo">
+                                <img src="https://picsum.photos/400/500?random=11" alt="صورة 2" class="slider-photo">
+                                <img src="https://picsum.photos/400/500?random=12" alt="صورة 3" class="slider-photo">
+                                <img src="https://picsum.photos/400/500?random=13" alt="صورة 4" class="slider-photo">
+                                <img src="https://picsum.photos/400/500?random=14" alt="صورة 5" class="slider-photo">
+                            </div>
+                        </div>
+                        <button class="slider-nav next" id="nextPhoto"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="page-nav">
+                <button class="nav-btn prev-page">→ السابق</button>
+                <button class="nav-btn next-page">التالي ←</button>
+            </div>
+        </div>
+
+        <!-- ===== PAGE 6: Candle ===== -->
+        <div class="page" data-page="6">
+            <div class="page-header">
+                <span class="page-title">🕯️ شمعة حبنا</span>
+                <span class="page-num">6 / 8</span>
+            </div>
+            
+            <div class="page-content page-center">
+                <section class="candle-section">
+                    <div class="section-header">
+                        <i class="fas fa-fire"></i>
+                        <h3>🕯️ شمعة حبنا</h3>
+                    </div>
+                    <div class="candle-container" id="candleContainer">
+                        <div class="candle-glow" id="candleGlow"></div>
+                        <div class="candle-body">
+                            <div class="candle-wax-drip"></div>
+                            <div class="candle-wax-drip"></div>
+                            <div class="candle-wax-drip"></div>
+                            <div class="candle-flame-container">
+                                <div class="candle-flame" id="candleFlame">
+                                    <div class="flame-inner"></div>
+                                    <div class="flame-middle"></div>
+                                    <div class="flame-outer"></div>
+                                </div>
+                                <div class="candle-smoke" id="candleSmoke"></div>
+                            </div>
+                            <div class="candle-wick"></div>
+                        </div>
+                        <div class="candle-base"></div>
+                        <p class="candle-text">كل نبضة من قلبي تحمل اسمك</p>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="page-nav">
+                <button class="nav-btn prev-page">→ السابق</button>
+                <button class="nav-btn next-page">التالي ←</button>
+            </div>
+        </div>
+
+        <!-- ===== PAGE 7: Quiz ===== -->
+        <div class="page" data-page="7">
+            <div class="page-header">
+                <span class="page-title">🎯 الاختبار</span>
+                <span class="page-num">7 / 8</span>
+            </div>
+            
+            <div class="page-content page-center">
+                <section class="quiz-section" id="quizSection">
+                    <div class="section-header">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>🎯 إلى أي درجة تعرفني؟</h3>
+                    </div>
+                    <div class="quiz-container" id="quizContainer">
+                        <div class="quiz-intro" id="quizIntro">
+                            <div class="quiz-heart">💖</div>
+                            <h3>اختبر حبك</h3>
+                            <p>أجب على الأسئلة واكتشف كم تعرف حبيبك</p>
+                            <button class="quiz-start-btn" id="quizStartBtn">ابدأ الاختبار</button>
+                        </div>
+                        <div class="quiz-game" id="quizGame" style="display:none">
+                            <div class="quiz-header">
+                                <span class="quiz-progress" id="quizProgress">1 / 5</span>
+                                <span class="quiz-score" id="quizScore">✅ 0</span>
+                            </div>
+                            <div class="quiz-question" id="quizQuestion"></div>
+                            <div class="quiz-options" id="quizOptions"></div>
+                        </div>
+                        <div class="quiz-result" id="quizResult" style="display:none">
+                            <div class="result-icon" id="resultIcon">🏆</div>
+                            <h3 class="result-title" id="resultTitle">أحسنت!</h3>
+                            <div class="result-percentage">
+                                <span class="result-number" id="resultNumber">0%</span>
+                            </div>
+                            <p class="result-message" id="resultMessage"></p>
+                            <button class="quiz-retry-btn" id="quizRetryBtn">🔄 حاول مرة أخرى</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="page-nav">
+                <button class="nav-btn prev-page">→ السابق</button>
+                <button class="nav-btn next-page">التالي ←</button>
+            </div>
+        </div>
+
+        <!-- ===== PAGE 8: Final ===== -->
+        <div class="page" data-page="8">
+            <div class="page-header">
+                <span class="page-title">🎁 الختام</span>
+                <span class="page-num">8 / 8</span>
+            </div>
+            
+            <div class="page-content page-center">
+                <section class="action-buttons">
+                    <button class="action-btn" id="shareBtn">
+                        <i class="fas fa-share-alt"></i>
+                        <span>شارك الهدية</span>
+                    </button>
+                    <button class="action-btn" id="saveBtn">
+                        <i class="fas fa-download"></i>
+                        <span>احفظ كصورة</span>
+                    </button>
+                    <button class="action-btn" id="printBtn">
+                        <i class="fas fa-print"></i>
+                        <span>اطبع</span>
+                    </button>
+                </section>
+                
+                <footer class="signature">
+                    <p>صنع بحب ❤️ <span class="signature-name">امولتي</span></p>
+                </footer>
+            </div>
+            
+            <div class="page-nav">
+                <button class="nav-btn prev-page">→ السابق</button>
+            </div>
+        </div>
+
+        <!-- Page Dots Indicator -->
+        <div class="page-dots" id="pageDots"></div>
+    </div>
+
+    <!-- Popup Message -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <i class="fas fa-heart"></i>
+            <h3>أحبك يا أمل</h3>
+            <p>أنتِ أجمل ما حدث لي في الحياة</p>
+            <button id="closePopup">تأكيد</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
